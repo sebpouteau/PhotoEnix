@@ -1,4 +1,5 @@
 # -*- coding:utf-8 -*-
+# Copyright Sébastien Pouteau <sebastien.pouteau1@gmail.com>
 
 from tableaux import *
 

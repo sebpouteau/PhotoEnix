@@ -1,4 +1,6 @@
 #! /usr/bin/python3
+# Copyright Sébastien Pouteau <sebastien.pouteau1@gmail.com>
+
 from tkinter import*
 from tkinter.filedialog import *
 from pgm_raw import *
@@ -19,7 +21,7 @@ def recopier_tableau(tableau):
         for j in range(len(tableau[0])):
             tableau_copie[i][j]=tableau[i][j]
     return tableau_copie
-            
+
 def minimum_maximum(tableau):
     minimum=tableau[0][0]
     maximum=tableau[0][0]
@@ -70,7 +72,7 @@ def traitement_bruit_gaussien(ecart_type,tableau):
             elif tableau[i][j]<0:
                 tableau[i][j]=0
     return tableau
-               
+
 def traitement_symetrie(tableau):
     taille=len(tableau[0])
     milieu= taille//2
@@ -82,7 +84,7 @@ def traitement_symetrie(tableau):
         for i in range (len(tableau)):
             for j in range(taille//2-1):
                 inverse_deux_cellules(tableau[i],milieu-j,milieu+j+1)
-    
+
     return tableau
 
 def traitement_flou(tableau,nb_flou):
@@ -99,12 +101,12 @@ def traitement_flou(tableau,nb_flou):
                         if div==0:
                             s=tableau[i][j]
                         else:
-                            s+=s//div                                              
+                            s+=s//div
                     div+=1
             s//=div
             tableau_modif[i][j]=s
     return tableau_modif
-                     
+
 def traitement_contraste(tableau,minimum,maximum):
     if minimum!=maximum:
         for i in range(len(tableau)):
@@ -136,7 +138,7 @@ def traitement_rotation_gauche(tableau):
     tableau_modif=creer_tableau(len(tableau[0]), len(tableau), None)
     for i in range(len(tableau)):
         for j in range(len(tableau[0])):
-            tableau_modif[j][i]=tableau[i][len(tableau[0])-1-j]        
+            tableau_modif[j][i]=tableau[i][len(tableau[0])-1-j]
     return tableau_modif
 
 def traitement_miroir_vertical_droite(tableau):
@@ -145,7 +147,7 @@ def traitement_miroir_vertical_droite(tableau):
         for j in range(taille//2):
             tableau[i][taille-1-j]=tableau[i][j]
     return tableau
-                           
+
 def traitement_miroir_vertical_gauche(tableau):
     taille=len(tableau[0])
     for i in range(len(tableau)):
@@ -176,4 +178,3 @@ if __name__ == '__main__':
     print('\n test sur bruit avec ecart type de 10');s=traitement_bruit_gaussien(10,t);afficher_tableau(s)
     print('\n test sur la mise à l echelle ');s=mise_echelle_image(t,9,7);afficher_tableau(s)
     print('\n test sur le contraste ');minimum,maximum=minimum_maximum(c);s=traitement_contraste(c,minimum,maximum);afficher_tableau(s)
-

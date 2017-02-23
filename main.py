@@ -1,4 +1,6 @@
 #! /usr/bin/python3
+# Copyright Sébastien Pouteau <sebastien.pouteau1@gmail.com>
+
 from tkinter import *
 from interface import *
 from tkinter.filedialog import *
